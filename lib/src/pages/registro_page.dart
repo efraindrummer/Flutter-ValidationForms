@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:formvalidation/src/blocs/provider.dart';
+import 'package:formvalidation/src/providers/usuario_provider.dart';
 
 class RegistroPage extends StatelessWidget {
+
+  final usuarioProvider = new UsuarioProvider();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,20 +132,17 @@ class RegistroPage extends StatelessWidget {
           elevation: 0.0,
           color: Colors.deepPurple,
           textColor: Colors.white,
-          onPressed: snapshot.hasData ? () => _login(bloc, context) : null,
+          onPressed: snapshot.hasData ? () => _register(bloc, context) : null,
         );
       }
     );
   }
 
-  _login(LoginBloc bloc, BuildContext context){
+  _register(LoginBloc bloc, BuildContext context){
 
-    print('============');
-    print('Email: ${bloc.email}');
-    print('Password: ${bloc.password}');
-    print('============');
+    usuarioProvider.nuevoUsuario(bloc.email, bloc.password);
 
-    Navigator.pushReplacementNamed(context, 'home');
+    //Navigator.pushReplacementNamed(context, 'home');
   }
 
   Widget _crearFondo(BuildContext context) {
