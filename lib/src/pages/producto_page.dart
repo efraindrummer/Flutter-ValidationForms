@@ -126,12 +126,15 @@ class _ProductoPageState extends State<ProductoPage> {
     );
   }
 
-  void _submit(){
+  void _submit() async{
 
     if(!formKey.currentState.validate()) return;
 
     formKey.currentState.save();
 
+    if(foto != null){
+      producto.fotoUrl = await productoProvider.subirImagen(foto);
+    }
     
     setState(() { _guardando = true; });
 
