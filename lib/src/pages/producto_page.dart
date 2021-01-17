@@ -172,8 +172,16 @@ class _ProductoPageState extends State<ProductoPage> {
   }
 
   _seleccionarFoto() async{
+    _procesarImagen(ImageSource.gallery);
+  }
+
+  _tomarFoto() async{
+    _procesarImagen(ImageSource.camera);
+  }
+
+  _procesarImagen(ImageSource origin) async{
     final ImagePicker imagePicker = ImagePicker();
-    final PickedFile pickedFile = await imagePicker.getImage(source: ImageSource.gallery);
+    final PickedFile pickedFile = await imagePicker.getImage(source: origin);
     setState(() {
       if (pickedFile != null) {
         foto = File(pickedFile.path);
@@ -181,9 +189,5 @@ class _ProductoPageState extends State<ProductoPage> {
         print('No se seleccionó una foto.');
       }
     });
-  }
-
-  _tomarFoto(){
-
   }
 }
