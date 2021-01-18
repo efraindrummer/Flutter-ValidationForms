@@ -38,7 +38,7 @@ class ProductosBloc {
     await _productosProvider.borrarProducto(id);
   }
 
-  void elimiarProducto(ProductoModel producto) async{
+  void editarProducto(ProductoModel producto) async{
     _cargandoController.sink.add(true);
     await _productosProvider.editarProducto(producto);
     _cargandoController.sink.add(false);
