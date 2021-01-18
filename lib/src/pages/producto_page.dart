@@ -146,7 +146,7 @@ class _ProductoPageState extends State<ProductoPage> {
   
     //setState(() { _guardando = false; });
     mostrarSnackbar('Registro Guardado');
-    Navigator.pushNamed(context, 'home');
+    Navigator.pop(context, 'home');
   }
 
   void mostrarSnackbar(String mensaje){
